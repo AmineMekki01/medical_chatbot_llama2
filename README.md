@@ -1,3 +1,5 @@
+![Alt text](images/image-1.png)
+
 # medical_chatbot_llama2
 I will be using Llama 2 to build a medical chatbot.
 
@@ -9,4 +11,4 @@ i am going to use llama2 but i can't just get it and use it. I need a quantized 
 - Also vector database, i will use faiss cpu because i already have knowledge and experience using it. 
 
 
-![Alt text](image.png)
+![Alt text](images/image.png)
