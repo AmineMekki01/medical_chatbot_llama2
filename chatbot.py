@@ -14,7 +14,7 @@ PROMPT = config['custom_prompt_template']
 
 
 class QABot:
-    def __init__(self):
+    def __init__(self, DB_FAISS_PATH):
         self.db_path = DB_FAISS_PATH
 
     def qa_bot(self):

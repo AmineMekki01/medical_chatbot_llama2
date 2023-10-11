@@ -1,9 +1,7 @@
-chainlit.md
 llama-2-7b-chat.ggmlv3.q2_K.bin
 .chainlit
-vectorstores
 research
-
+vectorstores
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

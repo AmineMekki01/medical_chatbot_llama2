@@ -30,7 +30,9 @@ i am going to use llama2 but i can't just get it and use it. I need a quantized 
 - 7. The llm model generates the answer.
   
 # how to run
-- first you need to download the model from HF
+- first you need to download the model from HF\
+- you need to put your data in the data folder
+- run the ingest_data_VDB.py to ingest the data into the vector database and will in the folder vectorstores/db_faiss
 - use chainlit to run the model
 chainlit run chatbot.py
 

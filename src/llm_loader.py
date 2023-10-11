@@ -11,7 +11,7 @@ class LLMLoader:
             LLM: The LLM model
         """
         llm = CTransformers(
-            model="llama-2-7b-chat.ggmlv3.q2_K.bin",
+            model="./models/llama2/llama-2-7b-chat.ggmlv3.q2_K.bin",
             model_type="llama",
             max_new_tokens=512,
             temperature=0.5,
