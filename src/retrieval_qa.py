@@ -2,11 +2,19 @@ from langchain.chains import RetrievalQA
 
 class RetrievalQAChain:
     def __init__(self, llm, prompt, db):
-        self.llm = llm
-        self.prompt = prompt
-        self.db = db
+        self.llm = llm # LLM model
+        self.prompt = prompt # Prompt template 
+        self.db = db   # VDB Faiss
 
     def create_qa_chain(self):
+        """
+        Create the QA chain
+        
+        Returns:    
+        --------
+            RetrievalQA: The QA chain   
+            
+        """
         qa_chain = RetrievalQA.from_chain_type(
             llm=self.llm,
             chain_type="stuff",

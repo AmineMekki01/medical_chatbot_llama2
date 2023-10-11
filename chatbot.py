@@ -10,26 +10,41 @@ import chainlit as cl
 config = load_config('config.yaml')
 
 DB_FAISS_PATH = config['DB_FAISS_PATH']
-custom_prompt_template = config['custom_prompt_template']
+PROMPT = config['custom_prompt_template']
 
 
 class QABot:
-    def __init__(self, db_path):
+    def __init__(self):
         self.db_path = DB_FAISS_PATH
 
     def qa_bot(self):
+        """
+        Create the QA chain
+        
+        Returns:
+        --------
+            RetrievalQA: The QA chain
+            
+        """
         embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={"device": "cpu"})
         db_manager = DatabaseManager(embeddings, self.db_path)
         db = db_manager.load_db()
         llm_loader = LLMLoader()
         llm = llm_loader.load_llm()
-        prompt_manager = PromptTemplateManager(custom_prompt_template)
+        prompt_manager = PromptTemplateManager(PROMPT)
         qa_prompt = prompt_manager.set_custom_prompt()
         qa_chain_creator = RetrievalQAChain(llm, qa_prompt, db)
         qa = qa_chain_creator.create_qa_chain()
         return qa
 
 def final_result():
+    """
+    Create the QA chain
+
+    Returns:
+    --------
+        RetrievalQA: The QA chain   
+    """
     qa_bot_instance = QABot(DB_FAISS_PATH)
     qa = qa_bot_instance.qa_bot()
     qa_bot = cl.Bot.from_chain(qa)
@@ -38,6 +53,13 @@ def final_result():
 ## chainlit 
 @cl.on_chat_start
 async def start():
+    """
+    Create the QA chain
+    
+    Returns:    
+    --------
+        RetrievalQA: The QA chain   
+    """
     qa_bot_instance = QABot(DB_FAISS_PATH)
     chain = qa_bot_instance.qa_bot()
     message = cl.Message(content="Starting the medical chatbot ..... ")
@@ -49,6 +71,17 @@ async def start():
     
 @cl.on_message
 async def main(message):
+    """
+    Create the QA chain 
+    
+    Parameters:
+    -----------
+        message: The message from the user
+    
+    Returns:    
+    --------
+        RetrievalQA: The QA chain   
+    """
     chain = cl.user_session.get("chain")
     cb = cl.AsyncLangchainCallbackHandler(
         stream_final_answer=True,

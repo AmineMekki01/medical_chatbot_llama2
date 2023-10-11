@@ -1,5 +1,4 @@
 from langchain.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceEmbeddings
 
 class DatabaseManager:
     def __init__(self, embeddings, db_path):
@@ -7,5 +6,11 @@ class DatabaseManager:
         self.db_path = db_path
 
     def load_db(self):
+        """
+        Load the database from the db_path
+        
+        Returns:   
+            FAISS: The FAISS database        
+        """
         db = FAISS.load_local(self.db_path, self.embeddings)
         return db
