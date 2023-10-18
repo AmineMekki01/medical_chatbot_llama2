@@ -18,7 +18,7 @@ i am going to use llama2 but i can't just get it and use it. I need a quantized 
 - Also vector database, i will use faiss cpu because i already have knowledge and experience using it. 
 
 
-![Alt text](images/RAG_architecture.png.png)
+![Alt text](images/RAG_architecture.png)
 
 ## Explaining the architecture (A simple one)
 
